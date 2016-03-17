@@ -16,7 +16,7 @@ list installed modules to check if there are unsatisfied dipendencies
 
 #### Execute
 
-Create or start mongo-db container with mongodb inside
+Create or start mongo-db docker container with mongodb inside
 
     docker run --name mongo-db -p 27017:27017 -d mongo
 
