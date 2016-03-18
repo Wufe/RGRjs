@@ -26,4 +26,4 @@ start webpack
 
 start nodemon
 
-    nodemon --exec npm run babel-node -- server.js
+    npm start
