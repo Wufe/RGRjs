@@ -24,6 +24,8 @@ start webpack
 
     webpack -wd
 
+_ use -p for production, minimizing the build _
+
 start nodemon
 
     npm start

@@ -13,7 +13,6 @@ let API = {
               }
             }`
         }).done( resp => {
-            //console.log( resp );
             ServerActions.receiveLinks( resp.data.links );
         });
     }
