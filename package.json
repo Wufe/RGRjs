@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "babel-node": "babel-node --presets=react,es2015,stage-0",
-    "codemon": "nodemon --exec npm run babel-node --",
+    "codemon": "nodemon --ignore data/schema.json --exec npm run babel-node --",
     "start": "npm run codemon server.js",
     "pack": "webpack -wd"
   },

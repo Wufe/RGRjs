@@ -24,10 +24,10 @@ app.use( express.static( 'public' ) );
 
     app.listen( 8080, () => console.log( 'Listening on port 8080' ) );
 
-    // let json = await graphql( schema, introspectionQuery );
-    // fs.writeFile( './data/schema.json', JSON.stringify( json, null, 4 ), err => {
-    //     if( err ) throw err;
-    //     console.log( "JSON schema created" );
-    // })
+    let json = await graphql( schema, introspectionQuery );
+    fs.writeFile( './data/schema.json', JSON.stringify( json, null, 4 ), err => {
+        if( err ) throw err;
+        console.log( "JSON schema created" );
+    })
 
 })();
