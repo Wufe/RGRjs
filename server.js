@@ -11,10 +11,12 @@ let app = express();
 
 app.use( express.static( 'public' ) );
 
+console.log( "Connecting .. " );
 
-(async () => {
+( async () => {
 
     let db = await MongoClient.connect( "mongodb://192.168.99.100:27017/test" );
+    console.log( "Connected to mongo-db." );
     let schema = Schema( db );
 
     app.use( '/graphql', GraphQLHTTP({
