@@ -3,26 +3,23 @@ import {
     GraphQLObjectType,
     GraphQLInt,
     GraphQLString,
-    GraphQLList
+    GraphQLList,
+    GraphQLID
 } from 'graphql';
 import CustomGraphQLDateType from 'graphql-custom-datetype';
 import {ObjectQueries} from '../js/Queries';
+import User from './models/user';
+
+let resolveUsers = ( id ) => {
+    console.log( id );
+    //conn.query( ObjectQueries.LIST_USERS );
+};
 
 let Schema = ( conn ) => {
 
     let userType = new GraphQLObjectType({
         name: 'User',
-        fields: () => ({
-            id: { type: GraphQLString },
-            email: { type: GraphQLString },
-            status: { type: GraphQLInt },
-            type: { type: GraphQLInt },
-            name: { type: GraphQLString },
-            surname: { type: GraphQLString },
-            telephone: { type: GraphQLString },
-            gender: { type: GraphQLString },
-            dob: { type: GraphQLString }
-        })
+        fields: () => ( User.properties )
     });
 
     let schema = new GraphQLSchema({
@@ -31,7 +28,15 @@ let Schema = ( conn ) => {
             fields: () => ({
                 users: {
                     type: new GraphQLList( userType ),
-                    resolve: () => conn.query( ObjectQueries.LIST_USERS )
+                    args: {
+                        id: {
+                            type: GraphQLID
+                        },
+                        name: {
+                            type: GraphQLString
+                        }
+                    },
+                    resolve: ( _, args ) => User.resolve( args )
                 }
             })
         })
